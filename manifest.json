@@ -1,0 +1,13 @@
+{
+  "id": "branch-writing",
+  "name": "Branch Writing",
+  "version": "1.0.0",
+  "description": "Hierarchical branch-based writing with dot notation numbering",
+  "author": "",
+  "authorUrl": "",
+  "fundingUrl": [],
+  "license": "MIT",
+  "minAppVersion": "0.15.0",
+  "js": "main.js",
+  "css": "styles.css"
+}

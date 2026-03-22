@@ -1,0 +1,239 @@
+/* Branch Writing Plugin Styles */
+
+/* Variables - will use Obsidian theme variables when available */
+:root {
+  --branch-writing-bg: #ffffff;
+  --branch-writing-bg-secondary: #fafafa;
+  --branch-writing-bg-hover: rgba(0, 0, 0, 0.05);
+  --branch-writing-bg-selected: rgba(0, 120, 212, 0.1);
+  --branch-writing-bg-input: #ffffff;
+  --branch-writing-bg-action: #e8e8e8;
+  --branch-writing-bg-action-hover: #d8d8d8;
+  --branch-writing-bg-delete: #ffdddd;
+  --branch-writing-border: #e0e0e0;
+  --branch-writing-border-light: #eeeeee;
+  --branch-writing-text: #333333;
+  --branch-writing-text-secondary: #666666;
+  --branch-writing-text-muted: #888888;
+  --branch-writing-accent: #0066cc;
+  --branch-writing-accent-hover: #0055aa;
+  --branch-writing-delete: #cc0000;
+  --branch-writing-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* Container */
+.branch-writing-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Block Styles */
+.bw-block {
+  font-family: var(--branch-writing-font);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--branch-writing-text);
+}
+
+.bw-block-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 4px 8px;
+  margin: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.bw-block-row:hover {
+  background-color: var(--branch-writing-bg-hover);
+}
+
+.bw-block-row.bw-selected {
+  background-color: var(--branch-writing-bg-selected);
+}
+
+/* Collapse toggle */
+.bw-collapse {
+  width: 20px;
+  min-width: 20px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--branch-writing-text-muted);
+  user-select: none;
+  cursor: default;
+}
+
+.bw-collapse.has-children {
+  cursor: pointer;
+}
+
+.bw-collapse.has-children:hover {
+  color: var(--branch-writing-text);
+}
+
+.bw-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--branch-writing-text-muted);
+}
+
+/* Path prefix */
+.bw-path {
+  color: var(--branch-writing-accent);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  user-select: none;
+  min-width: 40px;
+}
+
+/* Block content */
+.bw-content {
+  flex: 1;
+  color: var(--branch-writing-text);
+  word-break: break-word;
+  padding: 0 4px;
+  min-height: 24px;
+}
+
+.bw-content-empty {
+  color: var(--branch-writing-text-muted);
+  font-style: italic;
+}
+
+/* Edit mode */
+.bw-textarea {
+  flex: 1;
+  min-height: 60px;
+  padding: 4px 8px;
+  border: 1px solid var(--branch-writing-accent);
+  border-radius: 4px;
+  font-family: var(--branch-writing-font);
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  background: var(--branch-writing-bg-input);
+  color: var(--branch-writing-text);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.bw-textarea:focus {
+  border-color: var(--branch-writing-accent);
+}
+
+/* Action buttons */
+.bw-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.bw-block-row:hover .bw-actions,
+.bw-block-row.bw-selected .bw-actions {
+  opacity: 1;
+}
+
+.bw-action {
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--branch-writing-bg-action);
+  color: var(--branch-writing-text-secondary);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.bw-action:hover {
+  background-color: var(--branch-writing-bg-action-hover);
+}
+
+.bw-action-delete:hover {
+  background-color: var(--branch-writing-bg-delete);
+  color: var(--branch-writing-delete);
+}
+
+/* Children container */
+.bw-children {
+  margin-left: 0;
+}
+
+/* Empty state */
+.bw-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--branch-writing-text-muted);
+}
+
+.bw-empty p {
+  margin: 0 0 8px;
+}
+
+.bw-empty-hint {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Modal styles */
+.branch-writing-modal-content {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.branch-writing-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--branch-writing-border);
+}
+
+/* Scrollbar styling */
+.bw-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bw-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bw-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--branch-writing-border);
+  border-radius: 4px;
+}
+
+.bw-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--branch-writing-text-muted);
+}
+
+/* Dark mode support (Obsidian will inject .theme-dark) */
+.theme-dark {
+  --branch-writing-bg: #1e1e1e;
+  --branch-writing-bg-secondary: #252525;
+  --branch-writing-bg-hover: rgba(255, 255, 255, 0.05);
+  --branch-writing-bg-selected: rgba(0, 120, 212, 0.2);
+  --branch-writing-bg-input: #2d2d2d;
+  --branch-writing-bg-action: #3a3a3a;
+  --branch-writing-bg-action-hover: #4a4a4a;
+  --branch-writing-bg-delete: #442222;
+  --branch-writing-border: #3a3a3a;
+  --branch-writing-border-light: #2a2a2a;
+  --branch-writing-text: #cccccc;
+  --branch-writing-text-secondary: #999999;
+  --branch-writing-text-muted: #666666;
+  --branch-writing-delete: #ff6666;
+}
